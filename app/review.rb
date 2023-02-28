@@ -12,3 +12,5 @@ class Review < ActiveRecord::Base
     def product 
         Product.find(product: self.product)
     end
+
+end
