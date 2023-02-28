@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require_relative "../config/environment.rb"
+
+reviews = Review.all
+reviews.each do |review|
+  p review.user
+  p review.product
+  p review.print_review
+end
+
+products = Product.all
+products.each do |product|
+  p product.users
+  puts product.average_rating
+end
+
+users = User.all
+users.each do |user|
+  p user.products
+  p user.reviews
+  puts user.favorite_product
+end

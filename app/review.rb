@@ -1,16 +1,8 @@
-class Review < ActiveRecord::Base 
-    belongs_to :product 
+class Review < ActiveRecord::Base
     belongs_to :user
+    belongs_to :product 
 
-#returns the User instance for this Review
-    def user 
-        User.where(id: self.user_id)
+    def print_review
+      puts "Review for #{product.name} by #{user.name}: #{star_rating}. #{comment}"
     end
-
-
-# returns the Product instance for this Review
-    def product 
-        Product.find(product: self.product)
-    end
-
 end

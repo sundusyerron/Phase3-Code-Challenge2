@@ -1,15 +1,12 @@
 class User < ActiveRecord::Base
-    has_many :reviews
-    has_many :products, through: :reviews
-#returns a collection of all the Reviews that the User has given 
-   def reviews 
-    Review.find(user: self.user)
+   has_many :reviews
+   has_many :products, through: :reviews
+
+   def favorite_product
+     products.order("reviews.star_rating DESC").first
    end
 
-#returns a collection of all the Products that the User has reviewed
- 
-   def products 
-    Product.find(user: self.user)
+   def remove_reviews(product)
+     reviews.where(product: product).destroy_all
    end
-
 end
